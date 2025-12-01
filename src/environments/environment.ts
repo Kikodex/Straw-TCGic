@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // En desarrollo usamos el proxy: las peticiones a '/api' se redirigen a la API remota
   apiBase: '/api',
-  key: '61cc90d493ffb12ef68c193c60512e3e3ee7f28d78b4d520e12229f804d5a7a1' //aqui debes colocar tu key cuando esta deje de funconar. 
+  key: '3675c40424b7e1f8770edb2e8161d31dea71ffc8bf65fe6e9562ed66a62dd0e3' //aqui debes colocar tu key cuando esta deje de funconar. 
 };
 
 // Mantener export por compatibilidad
