@@ -1,0 +1,64 @@
+
+
+/* Animaciones */
+.animated-title {
+  text-align: center;
+  margin: 20px auto;
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace !important;
+  animation: tituloAnimado 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes tituloAnimado {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes moverInput {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.animar-input {
+  animation: moverInput 1s ease-in-out;
+}
+
+/* Layout */
+ion-card {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0 10px 0;
+}
+
+/* Fuente */
+ion-card, ion-card-header, ion-card-title, ion-card-content,
+ion-item, ion-label, ion-input, ion-select, ion-button,
+ion-footer, ion-toolbar, ion-title, h2, p, strong, span {
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* Footer */
+ion-content {
+  --padding-bottom: 20px !important; 
+}
+
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

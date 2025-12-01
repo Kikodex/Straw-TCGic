@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Barajas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button fill="solid" expand="block" (click)="navigateToCreate()">Crear baraja</ion-button>
+
+  <ion-list *ngIf="decks?.length; else noDecks">
+    <ion-item *ngFor="let d of decks">
+      <ion-label>
+        <h2>{{ d.name }}</h2>
+        <p>Líder: {{ d.leader?.name }} • Cartas: {{ d.cards.length }} • Total copias: {{ totalCopias(d) }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noDecks>
+    <div class="empty">No hay barajas creadas aún.</div>
+  </ng-template>
+</ion-content>
+
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-title size="small">App desarrollada por Kikodex</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+
+

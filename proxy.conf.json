@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://apitcg.com/api/one-piece",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "info",
+    "pathRewrite": { "^/api": "" }
+  }
+}

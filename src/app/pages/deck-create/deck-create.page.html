@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Baraja</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="finishCreation()" #deckForm="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>      
+          <ion-input placeholder = "Nombre de la baraja" name="deckName" [(ngModel)]="deckName" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input placeholder="Descripción" name="deckDesc" [(ngModel)]="deckDesc"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+           <h3>Cartas (50) - selecciona imagen/nombre y cantidad (1-4)</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-searchbar [debounce]="1000" (ionInput)="searchCards($event)"></ion-searchbar>
+          <ion-list *ngIf="results.length > 0">
+            <!-- Aqui se genera el resultado de la busqueda -->
+
+            <!-- Modificar en base a interfaz de api nueva -->
+            @for (results of results; track results) {
+              <ion-item [button]="true" detail="false" (click)="addCardToDeck(results.images.large, results.id)">
+                <ion-thumbnail slot="start">
+                 <img [src]="results.images.large">
+                </ion-thumbnail>
+                <ion-label>
+                  <h2>{{ results.name }}</h2>
+                  <p>{{ results.code }}</p>
+                </ion-label>
+              </ion-item>
+            }
+          </ion-list>
+      </ion-row>
+
+      <div class="grid-carts">
+          <!-- Aqui se genera el card con el contador de las cartas seleccionadas -->
+
+         <ion-row>
+           <div class="card-slot" *ngFor="let c of cartas">
+          <ion-col  size-sm="6" size-md="6" >
+              <!-- Modificar en base a interfaz de api nueva -->
+
+              <ion-item [button]="true" lines="none" >
+                <ion-thumbnail slot="start" (click)="removeCardFromDeck(cartas.indexOf(c))">
+                  <div class="thumb-wrapper">
+                    <img [src]="c.imagen">
+                    <!-- Badge superpuesto; por ahora muestra cantidad por defecto 1 -->
+                    <ion-badge class="thumb-badge">{{ c.contador }}</ion-badge>
+                  </div>
+                </ion-thumbnail>
+              </ion-item>
+
+          </ion-col>
+         
+          </div>
+         </ion-row>
+        
+      </div>
+    </ion-grid>
+
+   
+
+    
+
+    <ion-button expand="block" type="submit" [disabled]="!deckForm.form.valid">Terminar creación</ion-button>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+</ion-content>
