@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // En desarrollo usamos el proxy: las peticiones a '/api' se redirigen a la API remota
-  apiBase: '/api',
+  apiBase: 'https://www.apitcg.com/api/one-piece',
   key: '3675c40424b7e1f8770edb2e8161d31dea71ffc8bf65fe6e9562ed66a62dd0e3' //aqui debes colocar tu key cuando esta deje de funconar. 
 };
 
