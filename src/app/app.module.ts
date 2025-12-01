@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../core/services/auth.service';
 import { CardService } from '../core/services/card.service';
 import { DeckService } from '../core/services/deck.service';
+//import {SQLite} from '@awesome-cordova-plugins/sqlite/ngx';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { DeckService } from '../core/services/deck.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, CardService, DeckService],
+  providers: [AuthService, CardService, DeckService], //SQLite],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
