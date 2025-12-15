@@ -1,0 +1,13 @@
+{
+  "name": "Straw-TCG",
+  "type": "angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://apitcg.com/api"
+    }
+  ]
+}

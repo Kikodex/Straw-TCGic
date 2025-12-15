@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Baraja</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form (ngSubmit)="finishCreation()" #deckForm="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input class="input-gray" placeholder = "Nombre de la baraja" name="deckName" [(ngModel)]="deckName" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input class="input-gray" placeholder="Descripción" name="deckDesc" [(ngModel)]="deckDesc"></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label for="leader-select"><strong>Selecciona el Líder</strong></label>
+          <ion-select
+            id="leader-select"
+            name="selectedLeader"
+            [(ngModel)]="selectedLeader"
+            placeholder="Elige un líder"
+            class="leader-select"
+          >
+            @for (leader of leaders; track leader.id) {
+              <ion-select-option [value]="leader">
+                <img [src]="leader.images.small" alt="{{ leader.name }}" style="height: 30px; margin-right: 8px;">
+                {{ leader.name }} ({{ leader.code }})
+              </ion-select-option>
+            }
+          </ion-select>
+
+          <!-- Vista previa del líder seleccionado -->
+          @if (selectedLeader) {
+            <div class="leader-preview">
+              <img [src]="selectedLeader.images.large" alt="{{ selectedLeader.name }}" class="leader-image">
+              <div class="leader-info">
+                <h3>{{ selectedLeader.name }}</h3>
+                <p><strong>Código:</strong> {{ selectedLeader.code }}</p>
+                <p><strong>Tipo:</strong> {{ selectedLeader.type }}</p>
+                <p><strong>Poder:</strong> {{ selectedLeader.power }}</p>
+                <p><strong>Costo:</strong> {{ selectedLeader.cost }}</p>
+                <p><strong>Rareza:</strong> {{ selectedLeader.rarity }}</p>
+                <p><strong>Familia:</strong> {{ selectedLeader.family }}</p>
+                <p><strong>Habilidad:</strong></p>
+                <p [innerHTML]="selectedLeader.ability"></p>
+              </div>
+            </div>
+          }
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+           <h3>Cartas (50) - selecciona imagen/nombre y cantidad (1-4)</h3>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-searchbar [debounce]="1000" (ionInput)="searchCards($event)"></ion-searchbar>
+          <div class="search-grid" *ngIf="results.length > 0">
+            <ion-row>
+              @for (result of results; track result.id) {
+                <ion-col size="4" class="search-item-col">
+                  <div class="search-item" (click)="addCardToDeck(result)">
+                    <div class="search-item-image">
+                      <img [src]="result.images.large" alt="{{ result.name }}">
+                    </div>
+                    <div class="search-item-info">
+                      <h3>{{ result.name }}</h3>
+                      <p>{{ result.code }}</p>
+                    </div>
+                  </div>
+                </ion-col>
+              }
+            </ion-row>
+          </div>
+      </ion-row>
+
+      <div class="grid-carts">
+         <ion-row>
+           <ion-col size="6" class="card-slot" *ngFor="let c of cartas">
+              <div class="card-wrapper" (click)="removeCardFromDeck(cartas.indexOf(c))">
+                <img [src]="c.images.large" class="card-image">
+                <ion-badge class="card-badge">{{ c.count }}</ion-badge>
+              </div>
+          </ion-col>
+         </ion-row>
+      </div>
+    </ion-grid>
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="isLoading || totalCardsInDeck !== TOTAL || !selectedLeader"
+      color="primary">
+      @if (isLoading) {
+        <ion-spinner name="crescent" slot="start"></ion-spinner>
+        Guardando...
+      } @else {
+        Guardar Baraja
+      }
+    </ion-button>
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+</ion-content>

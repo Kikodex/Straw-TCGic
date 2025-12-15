@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Barajas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button fill="solid" expand="block" (click)="navigateToCreate()" color="primary">
+    <ion-icon name="add-circle" slot="start"></ion-icon>
+    Crear baraja
+  </ion-button>
+
+  <!-- Cards de Barajas -->
+  <div *ngIf="decks?.length; else noDecks" class="decks-grid">
+    <ion-card *ngFor="let deck of decks" (click)="navigateToDeck(deck.id)" class="deck-card">
+      <!-- Imagen del Líder -->
+      <div class="deck-card-image">
+        <img [src]="deck.leaderImage" alt="{{ deck.leaderName }}" class="leader-image">
+      </div>
+
+      <!-- Contenido de la tarjeta -->
+      <ion-card-content class="deck-card-content">
+        <h2 class="deck-name">{{ deck.deckName }}</h2>
+        <p class="leader-info">
+          <strong>Líder:</strong> {{ deck.leaderName }}
+        </p>
+        <p class="deck-description">{{ deck.description || 'Sin descripción' }}</p>
+
+        <div class="deck-meta">
+          <ion-chip size="small" color="primary">
+            <ion-label>{{ deck.createdAt | date: 'short' }}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Sin barajas -->
+  <ng-template #noDecks>
+    <div class="empty-state">
+      <ion-icon name="folder-open" class="empty-icon"></ion-icon>
+      <p class="empty-text">No hay barajas creadas aún.</p>
+      <p class="empty-subtext">¡Crea tu primera baraja para comenzar!</p>
+    </div>
+  </ng-template>
+</ion-content>
+
+<!-- Footer -->
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-title size="small">App desarrollada por Kikodex</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+
+

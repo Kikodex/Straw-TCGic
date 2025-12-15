@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <ion-item>
+      <ion-label position="stack">Usuario</ion-label>
+      <ion-input formControlName="username" autocomplete="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stack">Contraseña (máx 9 caracteres alfanuméricos)</ion-label>
+      <ion-input formControlName="password" type="password" autocomplete="new-password"></ion-input>
+    </ion-item>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <ion-button expand="block" type="submit" [disabled]="registerForm.invalid">Crear cuenta</ion-button>
+    <ion-button fill="outline" expand="block" (click)="goBack()">Volver a login</ion-button>
+  </form>
+</ion-content>

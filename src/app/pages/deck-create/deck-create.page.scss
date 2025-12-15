@@ -1,0 +1,222 @@
+/* Contenedor relativo para posicionar badge sobre la miniatura */
+.thumb-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.thumb-wrapper img {
+	display: block;
+	width: 48px;
+	height: 48px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.thumb-badge {
+	position: absolute;
+	top: -6px;
+	right: -6px;
+	background: var(--ion-color-primary);
+	color: #fff;
+	font-size: 0.7rem;
+	padding: 2px 6px;
+	border-radius: 12px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Estilos para inputs con fondo gris y bordes redondeados */
+.input-gray {
+  --background: #f0f0f0;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border-radius: 8px;
+}
+
+/* Grid de búsqueda - 3 columnas */
+.search-grid {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.search-item-col {
+  margin-bottom: 8px;
+  padding: 2px;
+}
+
+.search-item {
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.search-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.search-item-image {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.search-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-item-info {
+  padding: 6px 4px;
+}
+
+.search-item-info h3 {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
+.search-item-info p {
+  margin: 2px 0 0 0;
+  font-size: 0.7rem;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Estilos para las cartas seleccionadas en el grid */
+.grid-carts {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.card-wrapper:hover .card-image {
+  transform: scale(1.02);
+}
+
+.card-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--ion-color-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.card-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--ion-color-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.input-gray {
+  --background: #f0f0f0;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border-radius: 8px;
+}
+
+/* Estilos para el selector de líderes */
+.leader-select {
+  --background: #f0f0f0;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Vista previa del líder seleccionado */
+.leader-preview {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+}
+
+.leader-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.leader-info {
+  padding: 0;
+}
+
+.leader-info h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.3rem;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+}
+
+.leader-info p {
+  margin: 8px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.leader-info strong {
+  color: #333;
+}
+
+
